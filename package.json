@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/feras272/Week05Day04HW_Mongoose#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
   }
 }
