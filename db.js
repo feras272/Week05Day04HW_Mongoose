@@ -6,7 +6,7 @@ mongoose.connect(mongooseURI, () => {
     console.log('DATABASE IS CONNECTED ...');
 })
 
-db.on('error', err => {
+db.on('error', (err) => {
     console.log('Error occured during connecting MongoDB');
 });
 
