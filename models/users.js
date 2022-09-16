@@ -7,3 +7,9 @@ const userSchema = new Schema({
     favFood: String,
     age: Number
 });
+
+// Third: make model of the Schema
+const User = model('User', userSchema);
+
+// Forth: export the model
+module.exports = User
