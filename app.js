@@ -6,6 +6,8 @@ const port = 3000;
 const db = require("./db");
 const User = require("./models/users");
 
+app.use(express.json());
+
 // root page request
 app.get("/", (req, res) => {
     res.json("<h1>Hello World</h1>");
@@ -21,6 +23,18 @@ app.get('/get-users', (req, res) => {
         }
     })
 })
+
+// add user to 
+app.post("/post-users", (req, res) => {
+    User.create(req.body, function (err, small) {
+      if (err) {
+        console.log("ERROR => " + err);
+        res.status(400).json("User Validation Failed");
+      } else {
+        res.json("Success create new user");
+      }
+    });
+  });  
 
 // server start listening for client requests
 app.listen(port, () => {
