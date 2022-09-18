@@ -70,6 +70,23 @@ app.put('/put-users/fName/:oldName', (req, res) => {
       );
 });
 
+app.delete("/delete-users/:fName", (req, res) => {
+    console.log(req.params);
+    User.deleteOne({ fName: req.params.fName }, (err, deletedObj) => {
+      if (err) {
+        console.log("ERROR => " + err);
+        res.status(500).json("There is a Problem with the Database");
+      } else {
+        if (deletedObj.deletedCount === 0) {
+          res.status(404).json("User [" + req.params.fName + "] Not Found");
+        } else {
+          console.log("Deleted Object " + deletedObj);
+          res.json("Success delete " + req.params.fName);
+        }
+      }
+    });
+});
+
 // server start listening for client requests
 app.listen(port, () => {
     console.log('SERVER IS WORKING ...');
